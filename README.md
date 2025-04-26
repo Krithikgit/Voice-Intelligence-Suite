@@ -14,4 +14,4 @@ Features:
 
 🗣️ Speaker Diarization (Resemblyzer + clustering)
 
-Runs Python scripts under the hood. With Specific Environmental Variables.
+Runs Python scripts under the hood. With Specific Environment Variables.
