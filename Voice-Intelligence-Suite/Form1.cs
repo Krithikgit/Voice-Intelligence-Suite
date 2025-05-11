@@ -22,7 +22,7 @@ namespace Voice_Intelligence_Suite
 
         int sec = 0, min = 0;
 
-        string modulepath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);  //Get the path of the executable 
+        string modulepath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);  // Get the path of the executable 
         string userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile); // Get User Profile path 
         string scriptfullpath;
 
@@ -222,9 +222,8 @@ namespace Voice_Intelligence_Suite
         private async Task RunTranscriptionandTranslationAsync()
         {
 
-            scriptfullpath = Path.GetFullPath(Path.Combine(modulepath, @"..\..\..")); // Combines the full path of the script module 
-            string pythonScriptPath = Path.Combine(scriptfullpath, "Transcription&Translation.py");
-
+            scriptfullpath = Path.GetFullPath(Path.Combine(modulepath, @"..\..\..")); // C:\Users\krith\source\repos\Voice-Intelligence-Suite\Voice-Intelligence-Suite\
+            string pythonScriptPath = Path.Combine(scriptfullpath, "Transcription&Translation.py"); // C:\Users\krith\source\repos\Voice-Intelligence-Suite\Voice-Intelligence-Suite\Transcription&Translation.py
 
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
@@ -356,7 +355,8 @@ namespace Voice_Intelligence_Suite
                         StringBuilder sb = new StringBuilder();
                         foreach (var seg in segments)
                         {
-                            sb.AppendLine($"Speaker {seg.SpeakerId}: {seg.Text} [{seg.Start:F2}s - {seg.End:F2}s]");
+                            //sb.AppendLine($"Speaker {seg.SpeakerId}: {seg.Text} [{seg.Start:F2}s - {seg.End:F2}s]");
+                            sb.AppendLine($"Speaker {seg.SpeakerId}: [{seg.Start:F2}s - {seg.End:F2}s]");
                         }
 
                         //MessageBox.Show(sb.ToString(), "Diarization Result");
@@ -410,7 +410,7 @@ namespace Voice_Intelligence_Suite
 
         private void ToggleButton_Click(object sender, EventArgs e)
         {
-            Button clickedButton = sender as Button;
+            Button? clickedButton = sender as Button; // ? means that the sender can be null/nullable parameter pass
             Button[] buttons = { Transcription_button, Translate_button, Summarize_button, Diarization_button };
 
             foreach (Button btn in buttons)
@@ -418,9 +418,11 @@ namespace Voice_Intelligence_Suite
                 btn.BackColor = Color.FromArgb(217, 217, 217);
                 btn.ForeColor = SystemColors.ControlText;
             }
-
-            clickedButton.BackColor = Color.FromArgb(218, 145, 145);
-            clickedButton.ForeColor = SystemColors.ButtonHighlight;
+            if (clickedButton != null)
+            {
+                clickedButton.BackColor = Color.FromArgb(218, 145, 145);
+                clickedButton.ForeColor = SystemColors.ButtonHighlight;
+            }
 
         }
 

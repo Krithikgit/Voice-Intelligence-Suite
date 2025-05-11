@@ -9,7 +9,7 @@ from google.cloud import translate_v2 as translate  # Import Google Translate AP
 import pyaudio
 
 # Set up Google Cloud credentials
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"C:\Users\krith\source\repos\miniproj\miniproj\serv_acc.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = r"C:\Users\krith\source\repos\Voice-Intelligence-Suite-Prototype\Voice-Intelligence-Suite\serv_acc.json"
 
 # Audio parameters
 RATE = 16000
